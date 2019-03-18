@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MyEmployee.Models.EmployeeAlert>
+
+@{
+    ViewData["Title"] = "Alerts";
+}
+
+<br />br>
+
+<h2>Alerts</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Alert)*@
+                Alerts for
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Firstname)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AlertId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AlertId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AlertId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MyEmployee.Models.Employee>
+
+    @{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Detail</h2>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fullname)
+                </th>
+                <th>
+                    Alerts
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeAlert.Count)
+                    </td>
+
+                    <td>
+                        @*<a asp-action="Alerts" asp-route-id="@item.EmployeeId">Alerts</a> |
+                        <a asp-action="Alerts2" asp-route-id="@item.EmployeeId">Alerts2</a> |*@
+                        <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a> |
+                        @*<a asp-action="" asp-route-id="@item.EmployeeId">View</a>*@
+                        <a asp-action="Alerts" asp-route-id="@item.EmployeeId">Show Alerts</a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

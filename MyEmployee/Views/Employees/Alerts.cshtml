@@ -1,0 +1,45 @@
+﻿
+
+@model MyEmployee.Models.Employee
+
+@{
+    ViewData["Title"] = "Alerts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Alerts</h2>
+
+
+@{
+    var employeeId = Model.EmployeeId;
+}
+
+
+<table class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayFor(model => model.Fullname)</th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model.EmployeeAlert)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alert)
+                </td>
+            </tr>
+        }
+
+        @if (Model.EmployeeAlert.Count == 0)
+        {
+            <tr><td>There is no alert for @Html.DisplayFor(model => model.Firstname).</td></tr>
+        }
+
+    </tbody>
+</table>
+
+<a href="#" onclick="history.go(-1);">Back to List</a>
