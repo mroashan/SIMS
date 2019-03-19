@@ -37,11 +37,12 @@ namespace MyEmployee
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            
-            var connection = @"Server=DESKTOP-H0KCDSK\SQLEXPRESS;Initial Catalog=sims;Persist Security Info=True;User ID=sims;Password=pass123!";
+
+            var connection = Configuration.GetConnectionString("simsContext");
             services.AddDbContext<Models.simsContext>(options => options.UseSqlServer(connection));
 
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

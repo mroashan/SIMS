@@ -77,7 +77,7 @@ namespace MyEmployee.Controllers
                 return NotFound();
             }
 
-            var employeeAlert = await _context.EmployeeAlert.FindAsync(id);
+            var employeeAlert = await _context.EmployeeAlert.Include(a => a.Employee).Where(a => a.AlertId == id).FirstOrDefaultAsync();
             if (employeeAlert == null)
             {
                 return NotFound();
